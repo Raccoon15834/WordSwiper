@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            return MainFragment.newInstance(swipeScrn);
+            return MainFragment.newInstance(swipeScrn, position);//sends in this frags pos
         }
 
         @Override
@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-//view pagerAdapter or FragmentPagerAdapter?
+//view pagerAdapter or FragmentPagerAdapter??? How do you cycle through fragments??
 //add color TODO
+//Shift + F6 -- refactor all of that var name!!!
+//Video 31 out of 34
+
 //submit P3L06aDasAnushaViewPager2.apk, video, all java and xml
 //embellish with sound, diff word swipe. P3L06bDasAnushaViewPager2.apk and video

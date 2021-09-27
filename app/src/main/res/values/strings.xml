@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WordSwiper</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
 </resources>
