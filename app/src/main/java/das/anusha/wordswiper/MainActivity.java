@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         //pass yourself so adaptor attaches to thiss activity
         myFragAdater = new MyFragAdapter(this);
         swipeScrn.setAdapter(myFragAdater);
+        //set up chord identities
+        String[] chordBases = getResources().getStringArray(R.array.chordbases);
+        Chord[] myChords=  new Chord[chordBases.length];
+        for(int i=0; i<myChords.length; i++)
+            myChords[i] = new Chord(chordBases[i]);
     }
 
     private class MyFragAdapter extends FragmentStateAdapter {

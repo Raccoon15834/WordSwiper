@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainFragment extends Fragment {
     ViewPager2 parentScrn;
@@ -41,6 +42,11 @@ public class MainFragment extends Fragment {
         //access text
         TextView wordTxt = view.findViewById(R.id.words);
         wordTxt.setText("word array index: "+ position);
+        //can access parent activity layout
+        TabLayout fragBar = getActivity().findViewById(R.id.fragPicker);
+        //connects tabs to viewpager called parent scrn
+        new TabLayoutMediator(fragBar, parentScrn, (tab, position1) -> tab.setText("Go to " + position1)).attach();
     }
+
 }
 
