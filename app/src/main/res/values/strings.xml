@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">WordSwiper</string>
+    <string name="no">no</string>
+    <string name="yes">yes</string>
+    <string name="title">Chord Extensions</string>
+    <string name="directions">Is the following note, an available chord tension?
+        They are all C chords in context. (Don\'t include if already part of chord)</string>
+    <string name="explanation">Four Notes create the chord tone. Like dominant, diminished, augmented, etc.
+    Then you can add 9ths, 11ths and 13ths as tensions. The 11 may sometimes be sharp, and the </string>
+    <string-array name="chordbases">
+        <item>CMaj7: C E G B</item>
+        <item>Cm7: C Eb G Bb</item>
+        <item>Augmented: C Eb Gb Bb</item>
+        <item>CmMaj7: C Eb G B</item>
+        <item>CMaj+7 or raised 5th: CAGB</item>
+        <item>Diminished: C Eb Gb A</item>
+    </string-array>
+    <string-array name="extensions">
+        <item>9: D</item>
+        <item>11: F</item>
+        <item>#11: F#</item>
+        <item>b13: Ab</item>
+        <item>13: A</item>
+        <item>7: B</item>
+    </string-array>
 </resources>

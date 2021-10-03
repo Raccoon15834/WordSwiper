@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!--https://htmlcolorcodes.com/-->
+    <color name="yellow">#FFC300</color>
+    <color name="orange">#FF5733</color>
+    <color name="red">#C70039</color>
+    <color name="maroon">#900C3F</color>
+    <color name="purple">#581845</color>
 </resources>
