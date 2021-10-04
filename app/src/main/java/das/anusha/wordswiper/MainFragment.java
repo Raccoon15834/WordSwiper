@@ -40,10 +40,13 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //access text, and buttons
-        TextView wordTxt = view.findViewById(R.id.words);
+        TextView extTxt = view.findViewById(R.id.words);
+        TextView baseTxt = view.findViewById(R.id.baseChordName);
         int randExtIndx = scrnChord.getRandomExt();
-        String txtViewTxt = "For the chord "+ scrnChord.getBase() + ", is " + scrnChord.getExtString(randExtIndx) + " available?";
-        wordTxt.setText(txtViewTxt);
+        String txtViewTxt = scrnChord.getBase() + "\n" + scrnChord.getNotes();
+        extTxt.setText(scrnChord.getExtString(randExtIndx));
+        baseTxt.setText(txtViewTxt);
+
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
 

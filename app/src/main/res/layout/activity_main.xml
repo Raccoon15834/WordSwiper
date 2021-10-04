@@ -31,29 +31,34 @@
         android:id="@+id/title"
         app:layout_constraintLeft_toRightOf="@id/leftLIne"
         app:layout_constraintRight_toLeftOf="@id/rightLIne"
-        app:layout_constraintBottom_toTopOf="@id/midLine"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         android:adjustViewBounds="true"
         android:src="@mipmap/chordswiperlogotwo_foreground"
-        android:rotation="270"
-        android:layout_marginTop="@dimen/avgPadding"/>
+        android:rotation="270" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:background="@color/purple"
+        android:orientation="vertical"
+        android:padding="@dimen/avgPadding"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/midLine"
-        android:padding="@dimen/avgPadding"
-        android:background="@color/purple">
+        app:layout_constraintTop_toBottomOf="@id/midLine">
+
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/fragPicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fragPicker" />
+            android:layout_height="wrap_content" />
+
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/swipeContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/swipeContainer"
-            android:minHeight="40dp"
-            android:minWidth="100dp"/>
+            android:minWidth="100dp"
+            android:minHeight="40dp" />
 
     </LinearLayout>
 

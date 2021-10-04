@@ -20,6 +20,9 @@ public class Chord {
     public String getBase() {
         return base;
     }
+    public String getNotes() {
+        return notes;
+    }
     public int getRandomExt(){
         return (int)(Math.random()*extensions.length);
     }
