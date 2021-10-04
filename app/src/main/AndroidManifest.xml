@@ -10,13 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WordSwiper">
         <activity
-            android:name=".MainActivity"
+            android:name=".CoverActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="Begin Chord Swiper"
+            android:parentActivityName=".CoverActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CoverActivity"/>
         </activity>
     </application>
 

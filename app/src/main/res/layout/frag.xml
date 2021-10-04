@@ -2,30 +2,73 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/purple">
     <!--set array of words-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/words"
+        android:id="@+id/chordQuestion"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/baseChordName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="10dp"
+        android:text="Chord:"
+        android:textSize="@dimen/smallTxt"
+        android:fontFamily="serif"
+        android:textColor="@color/yellow"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/baseChordName"
+        app:layout_constraintLeft_toRightOf="@id/chordQuestion"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="10dp"
         android:text="numDefault"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="words"
+        app:layout_constraintTop_toBottomOf="@id/baseChordName"
+        android:layout_marginBottom="10dp"
+        android:text="Chord:"
+        android:textSize="@dimen/smallTxt"
+        android:fontFamily="serif"
+        android:textColor="@color/yellow"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/words"
+        app:layout_constraintLeft_toRightOf="equal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/baseChordName"
+        android:layout_marginBottom="10dp"
+        android:text="numDefault" />
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/myBtn1"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/myBtn2"
         app:layout_constraintTop_toBottomOf="@id/words"
-        android:text="@string/yes"/>
+        android:background="@color/maroon"
+        android:textColor="@color/orange"
+        android:text="@string/yes"
+        android:textSize="@dimen/bigTxt"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/myBtn2"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/myBtn1"
         app:layout_constraintTop_toBottomOf="@id/words"
-        android:text="@string/no"/>
+        android:background="@color/maroon"
+        android:textColor="@color/orange"
+        android:text="@string/no"
+        android:textSize="@dimen/bigTxt"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

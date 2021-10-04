@@ -19,11 +19,13 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class MainFragment extends Fragment {
     ViewPager2 parentScrn;
     Chord scrnChord;
+    Chord[] allChords;
     //static method can create itself
-    public static Fragment newInstance(ViewPager2 parentScrn, Chord pos){
+    public static Fragment newInstance(ViewPager2 parentScrn, Chord pos, Chord[] allChords){
         MainFragment fragment = new MainFragment();//uses super constructor calls overrided methods
         fragment.parentScrn = parentScrn;
         fragment.scrnChord = pos;
+        fragment.allChords = allChords;
         return fragment;
     }
 
@@ -47,12 +49,10 @@ public class MainFragment extends Fragment {
 
         //can access parent activity layout (no need for activity bundles)
         TabLayout fragBar = getActivity().findViewById(R.id.fragPicker);
-        //ADD ALL TABS as frags created from adapter
-        //TODO change position1? to myPos mabe?
-        new TabLayoutMediator(fragBar, parentScrn, (tab, position1) -> tab.setText(scrnChord.getBase())).attach();
+        //ADD ALL TABS as frags being created from adapter, creates variables tab and position
+        new TabLayoutMediator(fragBar, parentScrn, (tab, position) -> tab.setText(allChords[position].getBase())).attach();
     }
 
-    //TODO onClick buttons. bitmap animation
     //add animations to bitmap, ui movement, layout changes, between activities
         //developer.android.com/training/animation/overview
         //define  original shape: GROUP of  PATH values (vector)-drawable folder

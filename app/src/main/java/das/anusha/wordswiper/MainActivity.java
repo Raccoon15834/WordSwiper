@@ -24,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         //set up chord identities
         String[] chordBases = getResources().getStringArray(R.array.chordbases);
+        String[] ChordNotes = getResources().getStringArray(R.array.chordNotes);
         String[] extensions = getResources().getStringArray(R.array.extensions);
         myChords=  new Chord[chordBases.length];
         for(int i=0; i<myChords.length; i++)
-            myChords[i] = new Chord(chordBases[i], extensions, i);
+            myChords[i] = new Chord(chordBases[i], extensions, i, ChordNotes[i]);
         setUpChords(myChords);
 
         myBar = findViewById(R.id.fragPicker);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         //MAKE OWN CLASS to instantiate fragment in viewpager
         public Fragment createFragment(int position) {
-            return MainFragment.newInstance(swipeScrn, myChords[position]);//sends in fragment
+            return MainFragment.newInstance(swipeScrn, myChords[position], myChords);//sends in fragment
         }
 
         @Override
@@ -67,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-//TODO color, polish activity main layout, icon,
 // TODO cycle fragments, every time fragment reloaded diff question
-//TODO fix tab names
+//TODO onCLick add chord sounds, correct answers
 //Shift + F6 -- refactor all of that var name!!!
 
 //submit P3L06aDasAnushaViewPager2.apk, video, all java and xml

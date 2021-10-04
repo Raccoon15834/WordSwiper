@@ -3,14 +3,16 @@ package das.anusha.wordswiper;
 public class Chord {
     int[] available;
     String[] extensions;
+    String notes;
     int sound;
     String base;
     int myPos;
     //will play sound, and show check or x on buttons
-    public Chord(String base,  String[] extensions, int myPos){
+    public Chord(String base,  String[] extensions, int myPos, String notes){
         this.extensions = extensions;
         this.base = base;
         this.myPos = myPos;
+        this.notes = notes;
     }
     public void setAvailable(int[] exts){
         available = exts;

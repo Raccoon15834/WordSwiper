@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/yellow">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/midLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/leftLIne"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rightLIne"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/directions"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/midLine"
+        android:textColor="@color/orange"
+        android:text="@string/directions"
+        android:textSize="@dimen/smallTxt"
+        android:fontFamily="serif"
+        android:padding="@dimen/avgPadding"
+        android:shadowRadius="10"/>
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        app:layout_constraintLeft_toRightOf="@id/leftLIne"
+        app:layout_constraintRight_toLeftOf="@id/rightLIne"
+        app:layout_constraintBottom_toTopOf="@id/directions"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/chordswiperlogotwo_foreground"
+        android:rotation="270" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/startBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/midLine"
+        android:background="@color/maroon"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/bigTxt"
+        android:text="@string/start"
+        android:layout_margin="@dimen/avgPadding"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
