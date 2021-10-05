@@ -1,9 +1,12 @@
 package das.anusha.wordswiper;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -46,9 +49,26 @@ public class MainFragment extends Fragment {
         String txtViewTxt = scrnChord.getBase() + "\n" + scrnChord.getNotes();
         extTxt.setText(scrnChord.getExtString(randExtIndx));
         baseTxt.setText(txtViewTxt);
+        boolean correctness = scrnChord.isAvailable(randExtIndx);
 
+        Animation correct = AnimationUtils.loadAnimation(view.getContext(), R.anim.button_correct);
+        Animation wrong = AnimationUtils.loadAnimation(view.getContext(), R.anim.button_wrong);
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (correctness) yesBtn.startAnimation(correct);
+                else yesBtn.startAnimation(wrong);
+            }
+        });
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (correctness) noBtn.startAnimation(wrong);
+                else noBtn.startAnimation(correct);
+            }
+        });
 
         //can access parent activity layout (no need for activity bundles)
         TabLayout fragBar = getActivity().findViewById(R.id.fragPicker);
@@ -56,13 +76,15 @@ public class MainFragment extends Fragment {
         new TabLayoutMediator(fragBar, parentScrn, (tab, position) -> tab.setText(allChords[position].getBase())).attach();
     }
 
-    //add animations to bitmap, ui movement, layout changes, between activities
-        //developer.android.com/training/animation/overview
-        //define  original shape: GROUP of  PATH values (vector)-drawable folder
-            //search up vector attribute possibilites
-        //target those paths or whole group and set their animation (animated-vector)-drawable folder
-        //specify time location etc(objectAnimator or set-objectAnimator)
-            //call in java using ObjectAnimator or AnimatorSet
+    ////https://evgenii.com/blog/spring-button-animation-on-android/
+        // make a set .startAnimation on it
+        //setInterpolater for realistic bounce or falling effect
 
+    //developer.android.com/training/animation/overview - bitmap
+    //define  original shape: GROUP of  PATH values (vector)-drawable folder
+        //search up vector attribute possibilites
+    //target those paths or whole group and set their animation (animated-vector)-drawable folder
+    //specify time location etc(objectAnimator or set-objectAnimator)
+        //call in java using ObjectAnimator or AnimatorSet
 }
 

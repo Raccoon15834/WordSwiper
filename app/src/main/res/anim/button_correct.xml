@@ -1,0 +1,13 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="backgroundColor"
+        android:duration="2"
+        android:valueFrom="@color/maroon"
+        android:valueTo="@color/green" />
+    <objectAnimator
+        android:propertyName="textColor"
+        android:duration="2"
+        android:valueFrom="@color/orange"
+        android:valueTo="@color/red" />
+
+</set>
