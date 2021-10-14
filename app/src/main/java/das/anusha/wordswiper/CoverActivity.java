@@ -1,6 +1,7 @@
 package das.anusha.wordswiper;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,24 +17,21 @@ public class CoverActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cover);
 
-        getWindow().setExitTransition(new StartTransition());
+        //getWindow().setExitTransition(new StartTransition());
+        startBtn.setTransitionName("image");
 
         startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mainScrnChange = new Intent(getApplicationContext(), MainActivity.class);
-                ImageView titleLogo = findViewById(R.id.title);
-                startActivity(mainScrnChange);
+                //ImageView titleLogo = findViewById(R.id.title);
+                ActivityOptions options = ActivityOptions
+                        .makeSceneTransitionAnimation(CoverActivity.this, startBtn, "image");
+
+                startActivity(mainScrnChange, options.toBundle());
             }
         });
 
     }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.??, R.anim.??);
-//    }
-// https://developer.android.com/guide/topics/resources/animation-resource#Tween
 }

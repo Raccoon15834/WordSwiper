@@ -3,4 +3,5 @@
     <dimen name="smallTxt">18sp</dimen>
     <dimen name="bigTxt">45sp</dimen>
     <dimen name="avgPadding">15dp</dimen>
+    <integer name="animSpeed">500</integer>
 </resources>

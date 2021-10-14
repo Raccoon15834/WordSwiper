@@ -1,6 +1,8 @@
 package das.anusha.wordswiper;
 
 import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,40 +53,43 @@ public class MainFragment extends Fragment {
         baseTxt.setText(txtViewTxt);
         boolean correctness = scrnChord.isAvailable(randExtIndx);
 
-        Animation correct = AnimationUtils.loadAnimation(view.getContext(), R.anim.button_correct);
-        Animation wrong = AnimationUtils.loadAnimation(view.getContext(), R.anim.button_wrong);
+//        ObjectAnimator correct = (ObjectAnimator) AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_correct);
+//        ObjectAnimator wrong = (ObjectAnimator) AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
+        Animator correct = AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_correct);
+        Animator wrong =  AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
-        yesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (correctness) yesBtn.startAnimation(correct);
-                else yesBtn.startAnimation(wrong);
-            }
-        });
-        noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (correctness) noBtn.startAnimation(wrong);
-                else noBtn.startAnimation(correct);
-            }
-        });
+        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct));
+        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong));
+
 
         //can access parent activity layout (no need for activity bundles)
         TabLayout fragBar = getActivity().findViewById(R.id.fragPicker);
         //ADD ALL TABS as frags being created from adapter, creates variables tab and position
         new TabLayoutMediator(fragBar, parentScrn, (tab, position) -> tab.setText(allChords[position].getBase())).attach();
     }
+     class btnReaction implements View.OnClickListener {
+        Button btn;
+        boolean isCorrect;
+        Animator redAnim, greenAnim;
+        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim){
+            this.btn = btn;
+            this.isCorrect = isCorrect;
+            this.redAnim = redAnim;
+            this.greenAnim = greenAnim;
+        }
+        @Override
+        public void onClick(View view) {
+            if (isCorrect){
+                greenAnim.setTarget(btn);
+                greenAnim.start();
+            }
+            else{
+                redAnim.setTarget(btn);
+                redAnim.start();
+            }
+        }
+    }
 
-    ////https://evgenii.com/blog/spring-button-animation-on-android/
-        // make a set .startAnimation on it
-        //setInterpolater for realistic bounce or falling effect
-
-    //developer.android.com/training/animation/overview - bitmap
-    //define  original shape: GROUP of  PATH values (vector)-drawable folder
-        //search up vector attribute possibilites
-    //target those paths or whole group and set their animation (animated-vector)-drawable folder
-    //specify time location etc(objectAnimator or set-objectAnimator)
-        //call in java using ObjectAnimator or AnimatorSet
 }
 

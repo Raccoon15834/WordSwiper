@@ -16,9 +16,4 @@ public class StartTransition extends Transition {
     }
 
 }
-//for future ref
-//Window.setEnterTransition()
-//        Window.setExitTransition()
-//        Window.setSharedElementEnterTransition()
-//        Window.setSharedElementExitTransition()
-//https://medium.com/@belokon.roman/custom-transitions-in-android-f8949870bd63 ???
+
