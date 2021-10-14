@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set  xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="rotation"
+        android:valueFrom="100"
+        android:valueTo="0" />
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:valueFrom="M9,16.17 L5.83,10 l-2.42,6.11 L9,19 15,7 l-5.41,-1.41z"
+        android:valueTo=  "M9,11.17 L4.83,12 l-1.42,10.41 L9,19 21,7 l-1.41,-1.41z"
+        android:valueType="pathType"/>
+<!--    <objectAnimator-->
+<!--        android:duration="3000"-->
+<!--        android:propertyName="visibility"-->
+<!--        android:valueFrom="invisible"-->
+<!--        android:valueTo="visible" />-->
+</set>

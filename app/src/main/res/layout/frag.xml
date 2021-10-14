@@ -72,6 +72,16 @@
         android:text="@string/yes"
         android:textSize="@dimen/bigTxt"
         android:layout_margin="@dimen/avgPadding"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkYes"
+        app:layout_constraintLeft_toLeftOf="@id/myBtn1"
+        app:layout_constraintRight_toRightOf="@id/myBtn1"
+        app:layout_constraintTop_toBottomOf="@id/myBtn1"
+        android:visibility="invisible"
+        android:src="@drawable/checkmark"
+        android:layout_margin="@dimen/avgPadding"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"

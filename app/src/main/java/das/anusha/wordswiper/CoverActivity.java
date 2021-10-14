@@ -18,7 +18,7 @@ public class CoverActivity extends Activity {
         setContentView(R.layout.activity_cover);
 
         //getWindow().setExitTransition(new StartTransition());
-        startBtn.setTransitionName("image");
+        //startBtn.setTransitionName("image");
 
         startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
@@ -26,10 +26,11 @@ public class CoverActivity extends Activity {
             public void onClick(View view) {
                 Intent mainScrnChange = new Intent(getApplicationContext(), MainActivity.class);
                 //ImageView titleLogo = findViewById(R.id.title);
-                ActivityOptions options = ActivityOptions
-                        .makeSceneTransitionAnimation(CoverActivity.this, startBtn, "image");
-
-                startActivity(mainScrnChange, options.toBundle());
+//                ActivityOptions options = ActivityOptions
+//                        .makeSceneTransitionAnimation(CoverActivity.this, startBtn, "image");
+//
+//                startActivity(mainScrnChange, options.toBundle());
+                startActivity(mainScrnChange);
             }
         });
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,10 +58,12 @@ public class MainFragment extends Fragment {
 //        ObjectAnimator wrong = (ObjectAnimator) AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
         Animator correct = AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_correct);
         Animator wrong =  AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
+        ImageView yesCheck = view.findViewById(R.id.checkYes);
+        Animator checkAnim = AnimatorInflater.loadAnimator(view.getContext(), R.animator.popupscheck);
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
-        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct));
-        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong));
+        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct, yesCheck, checkAnim));
+        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong, yesCheck, checkAnim));
 
 
         //can access parent activity layout (no need for activity bundles)
@@ -70,19 +73,25 @@ public class MainFragment extends Fragment {
     }
      class btnReaction implements View.OnClickListener {
         Button btn;
+        ImageView check;
         boolean isCorrect;
-        Animator redAnim, greenAnim;
-        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim){
+        Animator redAnim, greenAnim, checker;
+        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim, ImageView check, Animator checker){
             this.btn = btn;
             this.isCorrect = isCorrect;
             this.redAnim = redAnim;
             this.greenAnim = greenAnim;
+            check.setVisibility(View.VISIBLE);
+            this.check = check;
+            this.checker = checker;
         }
         @Override
         public void onClick(View view) {
             if (isCorrect){
                 greenAnim.setTarget(btn);
                 greenAnim.start();
+                checker.setTarget(check);
+                checker.start();
             }
             else{
                 redAnim.setTarget(btn);

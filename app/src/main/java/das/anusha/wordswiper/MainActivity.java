@@ -77,19 +77,16 @@ public class MainActivity extends AppCompatActivity {
 //submit P3L06aDasAnushaViewPager2.apk, video, all java and xml
 //embellish with sound, diff word swipe. P3L06bDasAnushaViewPager2.apk and video
 
-//animations for moving separate views, view properties, bitmaps, activity transitions, fragment transitions
-//ACTIVITY TRANSITIONS
-
+//----------ACTIVITY TRANSITIONS------------
 //MOVEMENT: https://developer.android.com/guide/topics/resources/animation-resource#Tween
 ////PROPERTIES: https://evgenii.com/blog/spring-button-animation-on-android/
 // make a set .startAnimation on it
 //setInterpolater for realistic bounce or falling effect
-//BITMAP: developer.android.com/training/animation/overview
-//ACTIVITY:
-//Window.setEnterTransition()
-//Window.setExitTransition()
-//Window.setSharedElementEnterTransition()
-//Window.setSharedElementExitTransition()
+//VECTOR: https://medium.com/android-dev-hacks/android-vector-drawables-bfb515ba8f2e
+//https://developer.android.com/guide/topics/graphics/drawable-animation#AnimVector
+//https://medium.com/@ali.muzaffar/understanding-vectordrawable-pathdata-commands-in-android-d56a6054610e
+// ACTIVITY:
+// Window.setEnterTransition(), setExitTransition(), setSharedElementEnterTransition(), Window.setSharedElementExitTransition()
 //https://developer.android.com/training/transitions/start-activity
 //https://medium.com/@belokon.roman/custom-transitions-in-android-f8949870bd63  - custom
 //FRAGMENT: https://developer.android.com/guide/fragments/animate
