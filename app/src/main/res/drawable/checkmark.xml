@@ -1,8 +1,10 @@
 <vector android:height="24dp" android:tint="#12FD01"
     android:viewportHeight="24" android:viewportWidth="24"
     android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
     <path
         android:name="sticks"
         android:fillColor="@android:color/white"
-        android:pathData="M9,16.17 L9.83,12 l-1.42,1.41 L9,19 21,7 l-1.41,-1.41z"/>
+        android:pathData="M10,16.17 L4.83,12 l-1.42,1.41 L10,22 21,10 l-1.41,-3.41z"/>
+    </group>
 </vector>

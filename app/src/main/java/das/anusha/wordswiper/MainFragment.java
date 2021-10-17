@@ -3,6 +3,9 @@ package das.anusha.wordswiper;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
@@ -51,19 +55,19 @@ public class MainFragment extends Fragment {
         int randExtIndx = scrnChord.getRandomExt();
         String txtViewTxt = scrnChord.getBase() + "\n" + scrnChord.getNotes();
         extTxt.setText(scrnChord.getExtString(randExtIndx));
+        //TODO fix this part
+        MediaPlayer mp = MediaPlayer.create(getContext(), scrnChord.getSound());
         baseTxt.setText(txtViewTxt);
         boolean correctness = scrnChord.isAvailable(randExtIndx);
 
-//        ObjectAnimator correct = (ObjectAnimator) AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_correct);
-//        ObjectAnimator wrong = (ObjectAnimator) AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
         Animator correct = AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_correct);
         Animator wrong =  AnimatorInflater.loadAnimator(view.getContext(), R.animator.button_wrong);
         ImageView yesCheck = view.findViewById(R.id.checkYes);
-        Animator checkAnim = AnimatorInflater.loadAnimator(view.getContext(), R.animator.popupscheck);
+        yesCheck.setVisibility(View.INVISIBLE);
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
-        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct, yesCheck, checkAnim));
-        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong, yesCheck, checkAnim));
+        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct, yesCheck, mp));
+        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong, yesCheck, mp));
 
 
         //can access parent activity layout (no need for activity bundles)
@@ -75,23 +79,26 @@ public class MainFragment extends Fragment {
         Button btn;
         ImageView check;
         boolean isCorrect;
-        Animator redAnim, greenAnim, checker;
-        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim, ImageView check, Animator checker){
+        Animator redAnim, greenAnim;
+        MediaPlayer snd;
+        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim, ImageView check, MediaPlayer snd){
             this.btn = btn;
             this.isCorrect = isCorrect;
             this.redAnim = redAnim;
             this.greenAnim = greenAnim;
-            check.setVisibility(View.VISIBLE);
             this.check = check;
-            this.checker = checker;
+            this.snd = snd;
         }
         @Override
         public void onClick(View view) {
             if (isCorrect){
                 greenAnim.setTarget(btn);
                 greenAnim.start();
-                checker.setTarget(check);
-                checker.start();
+                check.setVisibility(View.VISIBLE);
+                check.setZ(10);//bring to front
+                Animatable myAnim = (Animatable) check.getDrawable();
+                myAnim.start();
+                snd.start();
             }
             else{
                 redAnim.setTarget(btn);

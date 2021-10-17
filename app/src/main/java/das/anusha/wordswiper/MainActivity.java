@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -26,18 +27,20 @@ public class MainActivity extends AppCompatActivity {
         String[] chordBases = getResources().getStringArray(R.array.chordbases);
         String[] ChordNotes = getResources().getStringArray(R.array.chordNotes);
         String[] extensions = getResources().getStringArray(R.array.extensions);
+        int[] chordSounds = new int[]{R.raw.cmaj7, R.raw.cm7,R.raw.caug,R.raw.cmmaj7,R.raw.c7,R.raw.cdim7};
         myChords=  new Chord[chordBases.length];
         for(int i=0; i<myChords.length; i++)
-            myChords[i] = new Chord(chordBases[i], extensions, i, ChordNotes[i]);
+            myChords[i] = new Chord(chordBases[i], extensions, i, ChordNotes[i], chordSounds[i]);
         setUpChords(myChords);
 
         myBar = findViewById(R.id.fragPicker);
         swipeScrn = findViewById(R.id.swipeContainer);
 
         //CREATE ADAPTER CLASS to create fragments
-        //pass yourself so adaptor attaches to thiss activity
+        //pass yourself so adaptor attaches to this activity
         myFragAdater = new MyFragAdapter(this);
         swipeScrn.setAdapter(myFragAdater);
+
     }
 
     private class MyFragAdapter extends FragmentStateAdapter {
@@ -70,12 +73,11 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-// TODO cycle fragments, every time fragment reloaded diff question
-//TODO onCLick add chord sounds, correct answers
-//Shift + F6 -- refactor all of that var name!!!
+// TODO cycle fragments, reset button?
+//TODO onCLick fix sounds
+//Shift + F6 -- refactor all of that var name!
 
-//submit P3L06aDasAnushaViewPager2.apk, video, all java and xml
-//embellish with sound, diff word swipe. P3L06bDasAnushaViewPager2.apk and video
+//embellish P3L06bDasAnushaViewPager2.apk and video, all java and xml
 
 //----------ACTIVITY TRANSITIONS------------
 //MOVEMENT: https://developer.android.com/guide/topics/resources/animation-resource#Tween
@@ -85,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
 //VECTOR: https://medium.com/android-dev-hacks/android-vector-drawables-bfb515ba8f2e
 //https://developer.android.com/guide/topics/graphics/drawable-animation#AnimVector
 //https://medium.com/@ali.muzaffar/understanding-vectordrawable-pathdata-commands-in-android-d56a6054610e
+//https://developer.android.com/guide/topics/graphics/vector-drawable-resources?hl=nl&skip_cache=true
+//https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable
+//https://shapeshifter.design/
 // ACTIVITY:
 // Window.setEnterTransition(), setExitTransition(), setSharedElementEnterTransition(), Window.setSharedElementExitTransition()
 //https://developer.android.com/training/transitions/start-activity

@@ -1,5 +1,7 @@
 package das.anusha.wordswiper;
 
+import androidx.annotation.RawRes;
+
 public class Chord {
     int[] available;
     String[] extensions;
@@ -8,11 +10,12 @@ public class Chord {
     String base;
     int myPos;
     //will play sound, and show check or x on buttons
-    public Chord(String base,  String[] extensions, int myPos, String notes){
+    public Chord(String base, String[] extensions, int myPos, String notes, int rawSound){
         this.extensions = extensions;
         this.base = base;
         this.myPos = myPos;
         this.notes = notes;
+        sound = rawSound;
     }
     public void setAvailable(int[] exts){
         available = exts;
@@ -37,6 +40,6 @@ public class Chord {
     public int getMyPos() {
         return myPos;
     }
-
+    public int getSound() {return sound; }
 
 }
