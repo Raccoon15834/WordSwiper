@@ -36,13 +36,26 @@
         android:fontFamily="serif"
         android:padding="@dimen/avgPadding"
         android:shadowRadius="10"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/explanation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/directions"
+        android:textColor="@color/orange"
+        android:text="@string/explanation"
+        android:textSize="@dimen/smallTxt"
+        android:fontFamily="serif"
+        android:padding="@dimen/avgPadding"
+        android:shadowRadius="10"/>
     <ImageView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/title"
         app:layout_constraintLeft_toRightOf="@id/leftLIne"
         app:layout_constraintRight_toLeftOf="@id/rightLIne"
-        app:layout_constraintBottom_toTopOf="@id/directions"
+        app:layout_constraintBottom_toTopOf="@id/explanation"
         android:adjustViewBounds="true"
         android:src="@mipmap/chordswiperlogotwo_foreground"
         android:rotation="270" />

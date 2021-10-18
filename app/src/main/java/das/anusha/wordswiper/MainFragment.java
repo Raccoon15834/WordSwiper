@@ -55,8 +55,6 @@ public class MainFragment extends Fragment {
         int randExtIndx = scrnChord.getRandomExt();
         String txtViewTxt = scrnChord.getBase() + "\n" + scrnChord.getNotes();
         extTxt.setText(scrnChord.getExtString(randExtIndx));
-        //TODO fix this part
-        MediaPlayer mp = MediaPlayer.create(getContext(), scrnChord.getSound());
         baseTxt.setText(txtViewTxt);
         boolean correctness = scrnChord.isAvailable(randExtIndx);
 
@@ -66,8 +64,8 @@ public class MainFragment extends Fragment {
         yesCheck.setVisibility(View.INVISIBLE);
         AppCompatButton yesBtn = view.findViewById(R.id.myBtn1);
         AppCompatButton noBtn = view.findViewById(R.id.myBtn2);
-        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct, yesCheck, mp));
-        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong, yesCheck, mp));
+        yesBtn.setOnClickListener(new btnReaction(yesBtn, correctness, wrong, correct, yesCheck));
+        noBtn.setOnClickListener(new btnReaction(noBtn, correctness, correct, wrong, yesCheck));
 
 
         //can access parent activity layout (no need for activity bundles)
@@ -80,14 +78,12 @@ public class MainFragment extends Fragment {
         ImageView check;
         boolean isCorrect;
         Animator redAnim, greenAnim;
-        MediaPlayer snd;
-        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim, ImageView check, MediaPlayer snd){
+        public btnReaction(Button btn, boolean isCorrect, Animator redAnim, Animator greenAnim, ImageView check){
             this.btn = btn;
             this.isCorrect = isCorrect;
             this.redAnim = redAnim;
             this.greenAnim = greenAnim;
             this.check = check;
-            this.snd = snd;
         }
         @Override
         public void onClick(View view) {
@@ -98,6 +94,7 @@ public class MainFragment extends Fragment {
                 check.setZ(10);//bring to front
                 Animatable myAnim = (Animatable) check.getDrawable();
                 myAnim.start();
+                MediaPlayer snd = MediaPlayer.create(getContext(), scrnChord.getSound());
                 snd.start();
             }
             else{

@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-// TODO cycle fragments, reset button?
+// TODO cycle fragments, reset button? transition
 //TODO onCLick fix sounds
-//Shift + F6 -- refactor all of that var name!
+//Shift + F6 -- refactor all of that var name
 
 //embellish P3L06bDasAnushaViewPager2.apk and video, all java and xml
 
-//----------ACTIVITY TRANSITIONS------------
+//----------ANIMATIONS (transitions, movements, properties)-----------
 //MOVEMENT: https://developer.android.com/guide/topics/resources/animation-resource#Tween
 ////PROPERTIES: https://evgenii.com/blog/spring-button-animation-on-android/
 // make a set .startAnimation on it

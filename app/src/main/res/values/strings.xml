@@ -3,10 +3,9 @@
     <string name="no">no</string>
     <string name="yes">yes</string>
     <string name="title">Chord Swiper</string>
-    <string name="directions">You will be given a four note chord in the key of C.
-        Decide if the following tension is an available tension. (Doesn\'t count if already part of chord)</string>
+    <string name="directions">Decide if the following tension is an available tension. (Doesn\'t count if already part of chord)</string>
     <string name="explanation">The 3rd and 7th create the basic chord tone. (e.g. dominant)
-    Then you can add 9ths, 11ths and 13ths as extensions to create jazzy interesting sounds. </string>
+    Then you can add 9ths, 11ths and 13ths as extensions to create jazzier sounds (even from C chords) </string>
     <string name="start">Start</string>
     <string-array name="chordbases">
         <item>CMaj7</item>
